@@ -27,7 +27,7 @@ import com.skydoves.landscapist.glide.GlideImage
 @Destination(style = StartScreenTransitionAnimation::class)
 @Composable
 fun StartScreen(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     navigator: DestinationsNavigator
 ) {
 
