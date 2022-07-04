@@ -120,7 +120,7 @@ fun UserHomeSection(modifier: Modifier = Modifier) {
     ClickableText(
         modifier = modifier
             .width(500.dp)
-            .padding(top = 24.dp),
+            .padding(top = 24.dp, bottom = 20.dp),
         text = annotatedString,
         onClick = { offset->
             annotatedString.getStringAnnotations(tag = IBRAJIX, start = offset, end = offset)

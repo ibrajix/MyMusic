@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bell.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_character.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_liked_state.xml" value="0.1" />

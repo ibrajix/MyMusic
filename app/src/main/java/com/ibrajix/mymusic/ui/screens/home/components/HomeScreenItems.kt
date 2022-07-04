@@ -28,6 +28,7 @@ fun HomeScreenItems(
 ) {
 
     var searchFieldValue by rememberSaveable { mutableStateOf("") }
+    var showKeyboard by rememberSaveable { mutableStateOf(false) }
 
 
     LazyColumn(
@@ -47,11 +48,12 @@ fun HomeScreenItems(
             UserHomeSection()
 
             //search home screen
-            SearchHomeSection(
+            SearchSection(
                 searchTextFieldValue = searchFieldValue,
                 onSearchTextFieldValueChange = { searchFieldValue = it },
                 onSearchTextFieldClicked = { navigator.navigate(SearchScreenDestination) },
-                searchFieldPlaceHolder = R.string.search_albums
+                searchFieldPlaceHolder = R.string.search_albums,
+                searchEnabled = false,
             )
 
             //popular item section

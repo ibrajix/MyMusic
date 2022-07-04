@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import com.ibrajix.mymusic.R
 import com.ibrajix.mymusic.ui.animations.StartScreenTransitionAnimation
 import com.ibrajix.mymusic.ui.screens.destinations.HomeScreenDestination
+import com.ibrajix.mymusic.ui.screens.destinations.SearchScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
