@@ -7,6 +7,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material.Colors
+import androidx.compose.material.Typography
 
 
 //custom colors
@@ -32,6 +33,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun MyMusicTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {
@@ -40,7 +42,7 @@ fun MyMusicTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composabl
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = MyTypography,
         shapes = Shapes,
         content = content
     )

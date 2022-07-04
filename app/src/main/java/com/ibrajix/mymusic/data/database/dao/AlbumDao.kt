@@ -17,12 +17,15 @@ interface AlbumDao {
     fun getAlbums(): Flow<List<Album>>
 
     @Query("UPDATE albums SET isLiked = :isLiked WHERE id = :id")
-    fun updateAlbumLikedState(isLiked: Boolean, id: Int?)
+    suspend fun updateAlbumLikedState(isLiked: Boolean, id: Int?)
 
     @Query("SELECT * FROM albums WHERE isLiked = :isLiked")
     fun getAllFavoriteAlbums(isLiked: Boolean = true) : Flow<List<Album>>
 
     @Query("SELECT EXISTS (SELECT 1 FROM albums WHERE id = :id)")
     fun checkIAlbumIsLiked(id: Int): Flow<Boolean>
+
+    @Query("SELECT COUNT(*) FROM albums")
+    suspend fun getTotalNumberOfAlBUMS(): Int
 
 }

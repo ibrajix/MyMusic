@@ -19,7 +19,10 @@ val ManRope =  FontFamily(
 )
 
 // Set of Material typography styles to start with
-val Typography = Typography(
+
+val MyTypography = Typography(
+
+    defaultFontFamily = ManRope,
 
     h1 = TextStyle(
         fontFamily = ManRope,
@@ -62,5 +65,4 @@ val Typography = Typography(
         fontWeight = FontWeight.Medium,
         fontSize = 10.sp
     ),
-
-    )
+)

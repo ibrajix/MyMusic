@@ -2,13 +2,12 @@
     <string name="app_name">MyMusic</string>
     <string name="icon_screen_reader">Icon on screen</string>
     <string name="image_screen_reader">Image on screen</string>
-    <string name="explore_salt_pay_world_of_music">Explore saltpay music</string>
     <string name="see_trending_songs_from_favs">See trending songs from your favourite artists</string>
     <string name="get_started">Get started ></string>
     <string name="hello">Hello</string>
     <string name="ibrahim">Ibrahim</string>
-    <string name="welcome_to_salt_music">Welcome to salt music by</string>
-    <string name="salt_pay">SaltPay</string>
+    <string name="welcome_to_my_music">Welcome to my music by</string>
+    <string name="ibrajix">Ibrajix</string>
     <string name="search_albums">Search albums</string>
     <string name="popular">Popular</string>
     <string name="all_albums">All Albums</string>
@@ -16,4 +15,5 @@
     <string name="no_result_found">No result found!</string>
     <string name="apple_music_website">https://music.apple.com/us/browse</string>
     <string name="no_browser">You don\'t have a browser to open the link</string>
+    <string name="explore_your_world_of_music">Explore your world of music</string>
 </resources>

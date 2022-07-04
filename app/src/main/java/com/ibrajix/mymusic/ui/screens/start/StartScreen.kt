@@ -49,41 +49,50 @@ fun StartScreen(
             .background(MaterialTheme.colors.secondary)
         ) {
 
-            Text(
-                modifier = modifier
-                    .padding(30.dp),
-                text = stringResource(id = R.string.explore_salt_pay_world_of_music),
-                style = MaterialTheme.typography.h1,
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.onSecondary
-            )
-
-            Text(
-                modifier = modifier
-                    .padding(horizontal = 30.dp),
-                text = stringResource(id = R.string.see_trending_songs_from_favs),
-                style = MaterialTheme.typography.caption,
-                textAlign = TextAlign.Center,
-                fontSize = 14.sp,
-                color = MaterialTheme.colors.onSecondary
-            )
-
-            Button(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .height(80.dp)
-                    .padding(8.dp),
-                shape = RoundedCornerShape(50.dp),
-                onClick = {
-                    navigator.popBackStack()
-                    navigator.navigate(HomeScreenDestination)
-                }
+            Column(
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
                 Text(
-                    text = stringResource(id =R.string.get_started),
-                    style = MaterialTheme.typography.h3
+                    modifier = modifier
+                        .padding(30.dp),
+                    text = stringResource(id = R.string.explore_your_world_of_music),
+                    style = MaterialTheme.typography.h1,
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colors.onSecondary
                 )
+
+                Text(
+                    modifier = modifier
+                        .padding(horizontal = 30.dp),
+                    text = stringResource(id = R.string.see_trending_songs_from_favs),
+                    style = MaterialTheme.typography.caption,
+                    textAlign = TextAlign.Center,
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colors.onSecondary
+                )
+
+                Button(
+                    modifier = modifier
+                        .fillMaxWidth(0.6f)
+                        .height(80.dp)
+                        .padding(top = 8.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .padding(8.dp),
+                    shape = RoundedCornerShape(50.dp),
+                    onClick = {
+                        navigator.popBackStack()
+                        navigator.navigate(HomeScreenDestination)
+                    }
+                ) {
+
+                    Text(
+                        text = stringResource(id =R.string.get_started),
+                        style = MaterialTheme.typography.h3
+                    )
+
+                }
 
             }
 
