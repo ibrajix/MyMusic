@@ -3,4 +3,16 @@
     <style name="Theme.MyMusic" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/splash_screen_background_color</item>
     </style>
+
+    <style name="Theme.MyMusic.SplashScreen" parent="Theme.SplashScreen">
+        <!--splash screen background-->
+        <item name="windowSplashScreenBackground">@color/splash_screen_background_color</item>
+
+        <!--splash screen drawable-->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+
+        <!--post splash screen - displayed after splash screen-->
+        <item name="postSplashScreenTheme">@style/Theme.MyMusic</item>
+    </style>
+
 </resources>

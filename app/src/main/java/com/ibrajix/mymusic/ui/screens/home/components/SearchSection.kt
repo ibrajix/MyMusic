@@ -3,7 +3,6 @@ package com.ibrajix.mymusic.ui.screens.home.components
 import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -11,7 +10,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -36,6 +34,7 @@ fun SearchSection(
     onSearchTextFieldClicked : () -> Unit,
     searchEnabled: Boolean = true,
     searchFieldPlaceHolder : Int,
+    showKeyboardOnStart: Boolean = false
 )
 {
 
@@ -43,13 +42,21 @@ fun SearchSection(
     val focusRequester = FocusRequester()
     val keyboard = LocalSoftwareKeyboardController.current
 
-    TextField(
-        modifier = modifier
+    val searchModifier = if (!showKeyboardOnStart){
+        modifier
             .fillMaxWidth()
-            .focusRequester(focusRequester)
             .clickable {
                 onSearchTextFieldClicked()
-            },
+            }
+    }
+    else{
+        modifier
+            .fillMaxWidth()
+            .focusRequester(focusRequester)
+    }
+
+    TextField(
+        modifier = searchModifier,
         enabled = searchEnabled,
         value = searchTextFieldValue,
         onValueChange = onSearchTextFieldValueChange,
@@ -77,26 +84,16 @@ fun SearchSection(
                 tint = MaterialTheme.colors.darkGrey
             )
         },
-        keyboardOptions = KeyboardOptions(
-            imeAction = ImeAction.Search
-        ),
-        keyboardActions = KeyboardActions(
-            onSearch ={
-                //do something here
-                onSearchTextFieldClicked()
-            }
-        ),
     )
+
 
     //LaunchedEffect prevents endless focus request
     LaunchedEffect(focusRequester) {
-        if (showKeyboard) {
+        if (showKeyboard && showKeyboardOnStart) {
             focusRequester.requestFocus()
             delay(100) // Make sure you have delay here
             keyboard?.show()
         }
     }
-
-    Log.e("skt", showKeyboard.toString())
 
 }

@@ -1,5 +1,6 @@
 package com.ibrajix.mymusic.ui.screens.home.components
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -26,7 +28,8 @@ import com.skydoves.landscapist.glide.GlideImage
 fun AlbumCard(
     modifier: Modifier = Modifier,
     album: Album,
-    onClick : (String) -> Unit
+    onClickCard : (String) -> Unit,
+    onClickLike : (Boolean, Int) -> Unit
 ){
 
     Card(
@@ -35,7 +38,7 @@ fun AlbumCard(
             .padding(vertical = 5.dp)
             .height(100.dp)
             .clickable {
-                onClick(album.linkUrl?:GOOGLE_URL)
+                onClickCard(album.linkUrl?:GOOGLE_URL)
             },
         shape = RoundedCornerShape(20.dp),
         backgroundColor = MaterialTheme.colors.secondary
@@ -82,10 +85,21 @@ fun AlbumCard(
 
             }
 
+
+            val imageLikedState = if (album.isLiked){
+                R.drawable.ic_liked_state
+            }
+            else{
+                R.drawable.ic_not_liked_state
+            }
+
             Image(
                 modifier = modifier
-                    .size(18.dp),
-                painter = painterResource(R.drawable.ic_liked_state),
+                    .size(18.dp)
+                    .clickable {
+                        album.id?.let { onClickLike(album.isLiked, it) }
+                    },
+                painter = painterResource(imageLikedState),
                 contentDescription = ""
             )
 

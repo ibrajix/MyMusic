@@ -70,7 +70,8 @@ fun SearchScreen(
 
                     },
                     searchFieldPlaceHolder = R.string.search_albums,
-                    searchEnabled = true
+                    searchEnabled = true,
+                    showKeyboardOnStart = true
                 )
             }
         }
@@ -79,9 +80,13 @@ fun SearchScreen(
             items(
                 items = searchedAlbums.value
             ){ album->
-                AlbumCard(album = album, onClick = {
-                    //on click album
-                })
+                AlbumCard(album = album,
+                    onClickCard = { albumUrl->
+                        //on card clicked
+                    },
+                    onClickLike = {isLiked, albumUrl->
+                      //on click like
+                    })
             }
         }
 

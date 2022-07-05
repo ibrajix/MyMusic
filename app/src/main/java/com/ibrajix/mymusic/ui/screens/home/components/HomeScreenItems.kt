@@ -1,5 +1,6 @@
 package com.ibrajix.mymusic.ui.screens.home.components
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,21 +16,24 @@ import com.ibrajix.mymusic.data.database.entity.Album
 import com.ibrajix.mymusic.ui.theme.bgHome
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ibrajix.mymusic.R
+import com.ibrajix.mymusic.data.database.viewmodel.AlbumDatabaseViewModel
 import com.ibrajix.mymusic.ui.screens.destinations.SearchScreenDestination
 
 @Composable
 fun HomeScreenItems(
     modifier: Modifier = Modifier,
     navigator: DestinationsNavigator,
-    albums: List<Album>
+    albums: List<Album>,
+    albumDatabaseViewModel: AlbumDatabaseViewModel = hiltViewModel()
 ) {
 
     var searchFieldValue by rememberSaveable { mutableStateOf("") }
-    var showKeyboard by rememberSaveable { mutableStateOf(false) }
-
+    val context = LocalContext.current
 
     LazyColumn(
         modifier = modifier
@@ -54,6 +58,7 @@ fun HomeScreenItems(
                 onSearchTextFieldClicked = { navigator.navigate(SearchScreenDestination) },
                 searchFieldPlaceHolder = R.string.search_albums,
                 searchEnabled = false,
+                showKeyboardOnStart = false
             )
 
             //popular item section
@@ -87,12 +92,16 @@ fun HomeScreenItems(
 
         }
 
+
         items(items = albums){ album->
 
             AlbumCard(
                 album = album,
-                onClick = { albumUrl->
-                    //go to details screen
+                onClickCard = { albumUrl->
+                  //card clicked, go to details screen
+                },
+                onClickLike = { isLiked, albumId->
+                    albumDatabaseViewModel.doUpdateAlbumLikedStatus(!isLiked, albumId)
                 }
             )
 

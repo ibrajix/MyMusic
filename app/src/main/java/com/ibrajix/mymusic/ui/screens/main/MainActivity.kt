@@ -29,10 +29,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        installSplashScreen()
+
         //open database
         albumDatabaseViewModel.openAndEndDatabase()
-
-        installSplashScreen()
 
         setContent {
             MyMusicTheme {
