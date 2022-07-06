@@ -52,6 +52,7 @@ fun SearchScreen(
 
     if (shouldOpenAlbumDetails){
         OpenAlbumDetails(albumUrl = albumUrl)
+        shouldOpenAlbumDetails = false
     }
 
     LazyColumn(

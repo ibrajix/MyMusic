@@ -31,12 +31,14 @@ fun HomeScreen(
 
     if (shouldOpenAlbumDetails){
         OpenAlbumDetails(albumUrl = albumUrl)
+        shouldOpenAlbumDetails = false
     }
 
    var shouldOpenTrendingAlbums by remember { mutableStateOf(false) }
 
     if (shouldOpenTrendingAlbums){
         OpenAlbumDetails(albumUrl = APPLE_MUSIC_WEBSITE)
+        shouldOpenTrendingAlbums = false
     }
 
     //get all albums

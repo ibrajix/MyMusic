@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -40,16 +41,17 @@ fun StartScreen(
             imageModel = R.drawable.kanye
         )
 
-        Box(modifier = modifier
+        Card(modifier = modifier
             .fillMaxWidth(0.8F)
-            .height(350.dp)
-            .padding(bottom = 50.dp)
-            .clip(RoundedCornerShape(50.dp))
             .align(Alignment.BottomCenter)
-            .background(MaterialTheme.colors.secondary)
+            .padding(bottom = 50.dp),
+            shape = RoundedCornerShape(50.dp),
+            backgroundColor = MaterialTheme.colors.secondary
         ) {
 
             Column(
+                modifier = modifier
+                    .padding(bottom = 20.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -93,13 +95,7 @@ fun StartScreen(
                     )
 
                 }
-
             }
-
         }
-
     }
-
-
-
 }
