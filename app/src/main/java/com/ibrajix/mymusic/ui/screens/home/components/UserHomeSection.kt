@@ -77,12 +77,12 @@ fun UserHomeSection(modifier: Modifier = Modifier) {
 
         Box(
             modifier = Modifier
-                .size(40.dp)
+                .size(30.dp)
                 .border(1.dp, Color.Gray, RoundedCornerShape(20.dp)),
         ){
             Image(
                 modifier = modifier
-                    .size(30.dp)
+                    .size(20.dp)
                     .align(Alignment.Center),
                 painter = painterResource(id = R.drawable.ic_bell), contentDescription = stringResource(
                     id = R.string.icon_screen_reader
@@ -103,7 +103,7 @@ fun UserHomeSection(modifier: Modifier = Modifier) {
         withStyle(
             style = SpanStyle(
                 color = MaterialTheme.colors.primary,
-                fontSize = 21.sp,
+                fontSize = 18.sp,
                 fontFamily = ManRope,
                 fontWeight = FontWeight.Bold,
                 textDecoration = TextDecoration.Underline
@@ -134,7 +134,7 @@ fun UserHomeSection(modifier: Modifier = Modifier) {
         },
         style = TextStyle(
             color = MaterialTheme.colors.onSecondary,
-            fontSize = 21.sp,
+            fontSize = 18.sp,
             fontFamily = ManRope,
             fontWeight = FontWeight.Bold
         )

@@ -85,7 +85,7 @@ fun HomeScreenItems(
                     .fillMaxWidth()
                     .padding(top = 12.dp),
                 style = MaterialTheme.typography.h2,
-                fontSize = 20.sp,
+                fontSize = 18.sp,
                 color = MaterialTheme.colors.onSecondary,
                 text = stringResource(id = R.string.all_albums)
             )

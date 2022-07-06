@@ -29,7 +29,7 @@ fun PopularAlbumSection(
             .fillMaxWidth()
             .padding(top = 24.dp),
         style = MaterialTheme.typography.h2,
-        fontSize = 20.sp,
+        fontSize = 18.sp,
         color = MaterialTheme.colors.onSecondary,
         text = stringResource(id = cardTextTitle)
     )
