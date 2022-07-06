@@ -1,6 +1,8 @@
 package com.ibrajix.mymusic.ui.screens.home.components
 
 import android.widget.Toast
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -24,6 +26,7 @@ import com.ibrajix.mymusic.ui.theme.darkGrey
 import com.ibrajix.mymusic.utils.Constants.GOOGLE_URL
 import com.skydoves.landscapist.glide.GlideImage
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AlbumCard(
     modifier: Modifier = Modifier,
@@ -38,7 +41,7 @@ fun AlbumCard(
             .padding(vertical = 5.dp)
             .height(100.dp)
             .clickable {
-                onClickCard(album.linkUrl?:GOOGLE_URL)
+                onClickCard(album.linkUrl ?: GOOGLE_URL)
             },
         shape = RoundedCornerShape(20.dp),
         backgroundColor = MaterialTheme.colors.secondary
@@ -93,15 +96,17 @@ fun AlbumCard(
                 R.drawable.ic_not_liked_state
             }
 
-            Image(
-                modifier = modifier
-                    .size(18.dp)
-                    .clickable {
-                        album.id?.let { onClickLike(album.isLiked, it) }
-                    },
-                painter = painterResource(imageLikedState),
-                contentDescription = ""
-            )
+            AnimatedContent(targetState = album.isLiked) {
+                Image(
+                    modifier = modifier
+                        .size(18.dp)
+                        .clickable {
+                            album.id?.let { onClickLike(album.isLiked, it) }
+                        },
+                    painter = painterResource(imageLikedState),
+                    contentDescription = ""
+                )
+            }
 
         }
 

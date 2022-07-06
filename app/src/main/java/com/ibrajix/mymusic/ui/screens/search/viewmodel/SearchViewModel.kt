@@ -19,10 +19,11 @@ class SearchViewModel @Inject constructor(private val albumDatabaseRepo: AlbumDa
     private val _searchFieldTextState: MutableState<String> = mutableStateOf("")
     val searchFieldTextState: State<String> = _searchFieldTextState
 
-    private var allAlbums: MutableStateFlow<List<Album>> = MutableStateFlow(arrayListOf())
+    private val _getAllAlbums = MutableStateFlow<List<Album>>(emptyList())
+    val getAllAlbums : StateFlow<List<Album>> =  _getAllAlbums
 
     //get albums that matches search query
-    private var _matchedAlbums: MutableStateFlow<List<Album>> = MutableStateFlow(arrayListOf())
+    private var _matchedAlbums = MutableStateFlow<List<Album>>(emptyList())
     val matchedAlbums: StateFlow<List<Album>> = _matchedAlbums
 
     init {
@@ -33,7 +34,7 @@ class SearchViewModel @Inject constructor(private val albumDatabaseRepo: AlbumDa
         viewModelScope.launch {
             albumDatabaseRepo.getAllAlbums
                 .collect{
-                  allAlbums.value = it
+                  _getAllAlbums.value = it
                 }
         }
     }
@@ -50,7 +51,7 @@ class SearchViewModel @Inject constructor(private val albumDatabaseRepo: AlbumDa
         }
 
         //albums from search
-        val albumsFromSearch = allAlbums.value.filter { album ->
+        val albumsFromSearch = _getAllAlbums.value.filter { album ->
            album.albumName?.contains(newValue, true) == true ||
                    album.artistName?.contains(newValue, true) == true
         }

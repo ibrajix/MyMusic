@@ -23,17 +23,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ibrajix.mymusic.R
 import com.ibrajix.mymusic.data.database.viewmodel.AlbumDatabaseViewModel
 import com.ibrajix.mymusic.ui.screens.destinations.SearchScreenDestination
+import com.ibrajix.mymusic.utils.Constants.APPLE_MUSIC_WEBSITE
 
 @Composable
 fun HomeScreenItems(
     modifier: Modifier = Modifier,
     navigator: DestinationsNavigator,
     albums: List<Album>,
-    albumDatabaseViewModel: AlbumDatabaseViewModel = hiltViewModel()
+    albumDatabaseViewModel: AlbumDatabaseViewModel = hiltViewModel(),
+    onCardClicked: (String) -> Unit,
+    onPopularAlbumClicked: () -> Unit
 ) {
-
-    var searchFieldValue by rememberSaveable { mutableStateOf("") }
-    val context = LocalContext.current
 
     LazyColumn(
         modifier = modifier
@@ -53,8 +53,8 @@ fun HomeScreenItems(
 
             //search home screen
             SearchSection(
-                searchTextFieldValue = searchFieldValue,
-                onSearchTextFieldValueChange = { searchFieldValue = it },
+                searchTextFieldValue = "",
+                onSearchTextFieldValueChange = {  },
                 onSearchTextFieldClicked = { navigator.navigate(SearchScreenDestination) },
                 searchFieldPlaceHolder = R.string.search_albums,
                 searchEnabled = false,
@@ -68,7 +68,7 @@ fun HomeScreenItems(
                 cardImage = R.drawable.ic_character,
                 onPopularAlbumCardClicked = {
                     //popular album clicked, go to apple music
-
+                    onPopularAlbumClicked()
                 }
             )
 
@@ -99,6 +99,7 @@ fun HomeScreenItems(
                 album = album,
                 onClickCard = { albumUrl->
                   //card clicked, go to details screen
+                    onCardClicked(albumUrl)
                 },
                 onClickLike = { isLiked, albumId->
                     albumDatabaseViewModel.doUpdateAlbumLikedStatus(!isLiked, albumId)
