@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  MyMusic is a beautiful app showing how to build modern looking interfaces using Jetpack Compose and recommended libraries, best practices and architecture
+  MyMusic is a beautiful app showing how to build modern looking interfaces using Jetpack Compose, recommended libraries, best practices and architecture
 </p>
 
 <br/>
